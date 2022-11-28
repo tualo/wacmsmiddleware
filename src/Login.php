@@ -4,6 +4,6 @@
 
     class Login extends CMSMiddleware {
         public static function run(&$request,&$result){
-            $result['SBO'] = time();
+            $result['sbo'] = time();
         }
     } 
