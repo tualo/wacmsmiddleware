@@ -1,0 +1,19 @@
+{
+    "name": "tualo/wacmsmiddleware",
+    "description": "tualo - wa management backend",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steffen Borchmann",
+            "email": "steffen.borchmann@tualo.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tualo\\Office\\WaCmsMiddleware\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
