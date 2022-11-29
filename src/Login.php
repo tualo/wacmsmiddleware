@@ -5,7 +5,7 @@
     class Login extends CMSMiddleware {
         public static function run(&$request,&$result){
             $result['sbo'] = time();
-            $result['message1']=$_SESSION['wa_session']['login']['formID'].'-----'.$_REQUEST['formID'];
+            $result['message'][]=$_SESSION['wa_session']['login']['formID'].'-----'.$_REQUEST['formID'];
             if ($_SESSION['wa_session']['login']['loggedIn']===false){
                 // isset 
                 if (
@@ -25,7 +25,7 @@
                     }
                 } else{
                    //  $_SESSION['wa_session']['login']['loginFormError']++;
-                   $result['message']=' Formfeld passt NICHT!-'.$_SESSION['wa_session']['login']['formID'].' vs. '.$_REQUEST['formID'];
+                   $result['message'][]=' Formfeld passt NICHT!-'.$_SESSION['wa_session']['login']['formID'].' vs. '.$_REQUEST['formID'];
                 }
             }
             $result['loginFormError']=$_SESSION['wa_session']['login']['loginFormError'];

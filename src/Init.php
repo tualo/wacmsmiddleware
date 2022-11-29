@@ -15,6 +15,7 @@ class Init extends CMSMiddleWare{
             $result['formId']=$_SESSION['wa_session']['login']['formId'];
             $result['wa_session']=$_SESSION['wa_session'];
             $result['abc']='BLUB';
+            $result['message'][]='init ...';
         }catch(\Exception $e){
             
         }
