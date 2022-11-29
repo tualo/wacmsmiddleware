@@ -11,7 +11,7 @@
                     isset($_REQUEST['formID']) 
                         && ($_SESSION['wa_session']['login']['formID']==$_REQUEST['formID'])
                 ){
-                    $result['message']=' Formfeld passt';
+                    $result['message']=' Formfeld passt -'.$_SESSION['wa_session']['login']['formID'].' vs. '.$_REQUEST['formID'];
                     if (
                         isset($_REQUEST[$_SESSION['wa_session']['login']['lastformId']]) 
                         && ($_SESSION['wa_session']['login']['formId']==$_REQUEST[$_SESSION['wa_session']['login']['lastformId']])
@@ -24,7 +24,7 @@
                     }
                 } else{
                    //  $_SESSION['wa_session']['login']['loginFormError']++;
-                   $result['message']=' Formfeld passt NICHT!';
+                   $result['message']=' Formfeld passt NICHT!-'.$_SESSION['wa_session']['login']['formID'].' vs. '.$_REQUEST['formID'];
                 }
             }
             $result['loginFormError']=$_SESSION['wa_session']['login']['loginFormError'];
