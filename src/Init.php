@@ -12,7 +12,7 @@ class Init extends CMSMiddleWare{
             $_SESSION['wa_session']['login']['lastformId']=$_SESSION['wa_session']['login']['formId'];
             $_SESSION['wa_session']['login']['formId']=uniqid('', true);
             $result['formId']=$_SESSION['wa_session']['login']['formId'];
-            $result['ABC']='BLUB';
+            $result['abc']='BLUB';
         }catch(\Exception $e){
             
         }
