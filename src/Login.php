@@ -13,9 +13,9 @@
                 ){
                     if (
                         isset($_REQUEST[$_SESSION['wa_session']['login']['lastformId']]) 
-                        && ($_SESSION['wa_session']['login']['loginFormID']==$_REQUEST[$_SESSION['wa_session']['login']['lastformId']])
+                        && ($_SESSION['wa_session']['login']['formId']==$_REQUEST[$_SESSION['wa_session']['login']['lastformId']])
                     ){
-                        if ($_REQUEST[$_SESSION['wa_session']['login']['lastformId']] == 'sbo'){
+                        if ($_REQUEST[$_SESSION['wa_session']['login']['lastformId']] == 'ABCDEFGH'){
                             $_SESSION['wa_session']['login']['loggedIn']=true;   
                         } 
                     } else {
