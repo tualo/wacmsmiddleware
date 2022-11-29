@@ -24,7 +24,7 @@
                         $_SESSION['wa_session']['login']['loginFormError']++;
                     }
                 } else{
-                   //  $_SESSION['wa_session']['login']['loginFormError']++;
+                   $_SESSION['wa_session']['login']['loginFormError']++;
                    $result['message']=' Formfeld passt NICHT!-'.$_SESSION['wa_session']['login']['formID'].' vs. '.$_REQUEST['formID'];
                 }
             }
