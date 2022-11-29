@@ -8,7 +8,8 @@ class Init extends CMSMiddleWare{
         @session_start();
         try{
             if(! isset($_SESSION['wa_session'])) $_SESSION['wa_session']=[];
-            if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid('', true),'loginFormError'=>0,'formId'=>''];
+            // if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid('', true),'loginFormError'=>0,'formId'=>''];
+            if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid('', true),'loginFormError'=>0];
             $_SESSION['wa_session']['login']['lastformId']=$_SESSION['wa_session']['login']['formId'];
             $_SESSION['wa_session']['login']['formId']=uniqid('', true);
             $result['formId']=$_SESSION['wa_session']['login']['formId'];
