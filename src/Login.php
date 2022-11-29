@@ -4,6 +4,7 @@
 
     class Login extends CMSMiddleware {
         public static function run(&$request,&$result){
+            @session_start();
             $result['sbo'] = time();
             $result['loginstart']=$_SESSION['wa_session']['login']['formID'].'-----'.$_REQUEST['formID'];
             if ($_SESSION['wa_session']['login']['loggedIn']===false){
