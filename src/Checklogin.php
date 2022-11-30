@@ -7,8 +7,13 @@ class Checklogin extends CMSMiddleWare{
         @session_start();
         try{
             if ($_SESSION['wa_session']['login']['loggedIn']===false){
-                header('Location: ./wa/login');
-                exit();
+                if($_SESSION['wa_session']['login']['loginFormError'] > 3){
+                    header('Location: https://www.bsi.bund.de');
+                    exit();
+                }else{
+                    header('Location: ./wa/login');
+                    exit();
+                }
             }
         }catch(\Exception $e){
             
