@@ -19,7 +19,7 @@
                     $_SESSION['wa_session']['login']['user']='Karl Knall';
                     $_SESSION['wa_session']['login']['role']='OberAdmin';
                     $result['message']=$result['message'].'<br> Eingaben OK -';
-                    header('Location: ./wa');
+                    header('Location: ./');
                 } else {
                     $_SESSION['wa_session']['login']['loginFormError']++;
                     $result['message']=$result['message'].'<br> Eingaben NICHT OK -';
