@@ -4,12 +4,13 @@
 
     class Login extends CMSMiddleware {
         public static function run(&$request,&$result){
-            @session_start();
-            $result['sbo'] = time();
             if($_SESSION['wa_session']['login']['loginFormError'] > 3){
                 header('Location: https://www.bsi.bund.de');
                 exit();
             }
+            @session_start();
+            $result['sbo'] = time();
+
             if( 
                 isset($_REQUEST[$_SESSION['wa_session']['login']['usrOldID']]) 
                     && isset($_REQUEST[$_SESSION['wa_session']['login']['pwOldID']])
