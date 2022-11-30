@@ -28,6 +28,13 @@ class Init extends CMSMiddleWare{
             $_SESSION['wa_session']['login']['pwID']=str_replace('.','',uniqid('', TRUE));
             $result['usrID']=$_SESSION['wa_session']['login']['usrID'];
             $result['pwID']=$_SESSION['wa_session']['login']['pwID'];
+            $result['wa_session']=$_SESSION['wa_session'];
+            if ( isset($_REQUEST['m']) ) {
+                $result['mLink']=$_REQUEST['m']; 
+            } else { 
+                $result['mLink']=1;
+            }
+
         }catch(\Exception $e){
             
         }

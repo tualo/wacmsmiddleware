@@ -5,8 +5,7 @@
     class Login extends CMSMiddleware {
         public static function run(&$request,&$result){
             @session_start();
-            $result['sbo'] = time();
-
+            // check dynamic fieldnames
             if( 
                 isset($_REQUEST[$_SESSION['wa_session']['login']['usrOldID']]) 
                     && isset($_REQUEST[$_SESSION['wa_session']['login']['pwOldID']])
@@ -34,7 +33,7 @@
                 
             }
             if($_SESSION['wa_session']['login']['loginFormError'] > 3){
-                header('Location: https://www.bsi.bund.de');
+                header("HTTP/1.1 404 Not Found");
                 exit();
             }
          }
