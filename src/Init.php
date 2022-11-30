@@ -14,20 +14,20 @@ class Init extends CMSMiddleWare{
         $result['loginstart']=$_SESSION['wa_session']['login']['formID'].'-----'.$_REQUEST['formID'];
         try{
             if(! isset($_SESSION['wa_session'])) $_SESSION['wa_session']=[];
-            // if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid(),'loginFormError'=>0,'formId'=>''];
+            // if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid('', FALSE),'loginFormError'=>0,'formId'=>''];
             if(! isset($_SESSION['wa_session']['login'])) {
-                $_SESSION['wa_session']['login']['usrID']=uniqid();
-                $_SESSION['wa_session']['login']['pwID']=uniqid();
-                $_SESSION['wa_session']['login']['loggedIn']=false; // ,'formId'=>uniqid(),'loginFormError'=>0];
+                $_SESSION['wa_session']['login']['usrID']=uniqid('', FALSE);
+                $_SESSION['wa_session']['login']['pwID']=uniqid('', FALSE);
+                $_SESSION['wa_session']['login']['loggedIn']=false; // ,'formId'=>uniqid('', FALSE),'loginFormError'=>0];
                 // $_SESSION['wa_session']['login']['lastformId']=$_SESSION['wa_session']['login']['formId'];
-                // $_SESSION['wa_session']['login']['formId']=uniqid();
+                // $_SESSION['wa_session']['login']['formId']=uniqid('', FALSE);
                 $result['formId']=$_SESSION['wa_session']['login']['formId'];
                 $result['wa_session']=$_SESSION['wa_session'];
             }
             $_SESSION['wa_session']['login']['usrOldID']=$_SESSION['wa_session']['login']['usrID'];
             $_SESSION['wa_session']['login']['pwOldID']=$_SESSION['wa_session']['login']['pwID'];
-            $_SESSION['wa_session']['login']['usrID']=uniqid();
-            $_SESSION['wa_session']['login']['pwID']=uniqid();
+            $_SESSION['wa_session']['login']['usrID']=uniqid('', FALSE);
+            $_SESSION['wa_session']['login']['pwID']=uniqid('', FALSE);
             $result['usrID']=$_SESSION['wa_session']['login']['usrID'];
             $result['pwID']=$_SESSION['wa_session']['login']['pwID'];
         }catch(\Exception $e){
