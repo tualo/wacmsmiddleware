@@ -18,13 +18,14 @@
                     $_SESSION['wa_session']['login']['loggedIn']=TRUE;
                     $_SESSION['wa_session']['login']['user']='Karl Knall';
                     $_SESSION['wa_session']['login']['role']='OberAdmin';
+                    $result['message']=$result['message'].'<br> Eingaben OK -';
                     header('Location: ./wa');
                 } else {
                     $_SESSION['wa_session']['login']['loginFormError']++;
-
+                    $result['message']=$result['message'].'<br> Eingaben NICHT OK -';
                 }
 
-                $result['message']=' Formularfelder vorhanden -> passt -';
+                $result['message']=$result['message'].'<br> Formularfelder vorhanden -> passt -';
 
             } else {
                 $result['message']=' Formularfelder NICHT vorhanden -> passt NICHT -';
