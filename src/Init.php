@@ -1,5 +1,10 @@
 <?php
-
+/*
+* usrID -> formularfeld Username
+* usrOldID -> formularfeld Username before
+* pwID -> formularfeld Password
+* pwOldID -> formularfeld Password before
+*/
 namespace Tualo\Office\WaCmsMiddleware;
 use Tualo\Office\ContentManagementSystem\CMSMiddleware;
 
@@ -10,11 +15,19 @@ class Init extends CMSMiddleWare{
         try{
             if(! isset($_SESSION['wa_session'])) $_SESSION['wa_session']=[];
             // if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid('', true),'loginFormError'=>0,'formId'=>''];
-            if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>uniqid('', true),'loginFormError'=>0];
-            $_SESSION['wa_session']['login']['lastformId']=$_SESSION['wa_session']['login']['formId'];
-            $_SESSION['wa_session']['login']['formId']=uniqid('', true);
-            $result['formId']=$_SESSION['wa_session']['login']['formId'];
-            $result['wa_session']=$_SESSION['wa_session'];
+            if(! isset($_SESSION['wa_session']['login'])) {
+                $_SESSION['wa_session']['login']['usrID']=uniqid('', true);
+                $_SESSION['wa_session']['login']['pwID']=uniqid('', true);
+                $_SESSION['wa_session']['login']['loggedIn']=false; // ,'formId'=>uniqid('', true),'loginFormError'=>0];
+                // $_SESSION['wa_session']['login']['lastformId']=$_SESSION['wa_session']['login']['formId'];
+                // $_SESSION['wa_session']['login']['formId']=uniqid('', true);
+                $result['formId']=$_SESSION['wa_session']['login']['formId'];
+                $result['wa_session']=$_SESSION['wa_session'];
+            }
+            $_SESSION['wa_session']['login']['usrOldID']=$_SESSION['wa_session']['login']['usrID'];
+            $_SESSION['wa_session']['login']['pwOldID']=$_SESSION['wa_session']['login']['pwID'];
+            $result['usrID']=$_SESSION['wa_session']['login']['usrID'];
+            $result['pwID']=$_SESSION['wa_session']['login']['pwID'];
         }catch(\Exception $e){
             
         }
