@@ -22,6 +22,10 @@
                     header('Location: ../wa');
                     exit();
                 } else {
+                    if($_SESSION['wa_session']['login']['loginFormError'] > 3){
+                        header('Location: https://www.bsi.bund.de');
+                        exit();
+                    }
                     $_SESSION['wa_session']['login']['loginFormError']++;
                     $result['message']=$result['message'].'<br> Eingaben NICHT OK -';
                 }
