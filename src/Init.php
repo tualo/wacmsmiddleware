@@ -11,8 +11,8 @@ use Tualo\Office\ContentManagementSystem\CMSMiddleware;
 class Init extends CMSMiddleWare{
     public static function run(&$request,&$result){
         @session_start();
-        $result['loginstart']=$_SESSION['wa_session']['login']['formID'].'-----'.$_REQUEST['formID'];
         try{
+            if ( isset($_REQUEST['logout']) ) unset($_SESSION['wa_session']) ;            
             if(! isset($_SESSION['wa_session'])) $_SESSION['wa_session']=[];
             // if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>str_replace('.','',uniqid('', TRUE)),'loginFormError'=>0,'formId'=>''];
             if(! isset($_SESSION['wa_session']['login'])) {
