@@ -28,7 +28,7 @@
                 $result['message']=$result['message'].'<br> Formularfelder vorhanden -> passt -';
 
             } else {
-                $result['message']=' Formularfelder NICHT vorhanden -> passt NICHT -';
+                $result['message']=$result['message'].' -> Formularfelder NICHT vorhanden -> passt NICHT -';
                 $_SESSION['wa_session']['login']['loginFormError']++;
                 
             }

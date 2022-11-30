@@ -17,7 +17,7 @@ class Init extends CMSMiddleWare{
             if(! isset($_SESSION['wa_session']['login'])) {
                 $_SESSION['wa_session']['login']['usrID']=str_replace('.','',uniqid('', TRUE));
                 $_SESSION['wa_session']['login']['pwID']=str_replace('.','',uniqid('', TRUE));
-                $_SESSION['wa_session']['login']['loggedIn']=false; // ,'formId'=>str_replace('.','',uniqid('', TRUE)),'loginFormError'=>0];
+                $_SESSION['wa_session']['login']['loggedIn']=false; 
                 $_SESSION['wa_session']['login']['loginFormError']=0;
                 $result['formId']=$_SESSION['wa_session']['login']['formId'];
                 $result['wa_session']=$_SESSION['wa_session'];
