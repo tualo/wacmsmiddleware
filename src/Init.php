@@ -14,14 +14,11 @@ class Init extends CMSMiddleWare{
         try{
             if ( isset($_REQUEST['logout']) ) unset($_SESSION['wa_session']) ;            
             if(! isset($_SESSION['wa_session'])) $_SESSION['wa_session']=[];
-            // if(! isset($_SESSION['wa_session']['login'])) $_SESSION['wa_session']['login']=['loggedIn'=>false,'formId'=>str_replace('.','',uniqid('', TRUE)),'loginFormError'=>0,'formId'=>''];
             if(! isset($_SESSION['wa_session']['login'])) {
-                $_SESSION['wa_session']['login']['usrID']=uniqid('', TRUE);
+                $_SESSION['wa_session']['login']['usrID']=str_replace('.','',uniqid('', TRUE));
                 $_SESSION['wa_session']['login']['pwID']=str_replace('.','',uniqid('', TRUE));
                 $_SESSION['wa_session']['login']['loggedIn']=false; // ,'formId'=>str_replace('.','',uniqid('', TRUE)),'loginFormError'=>0];
                 $_SESSION['wa_session']['login']['loginFormError']=0;
-                // $_SESSION['wa_session']['login']['lastformId']=$_SESSION['wa_session']['login']['formId'];
-                // $_SESSION['wa_session']['login']['formId']=str_replace('.','',uniqid('', TRUE));
                 $result['formId']=$_SESSION['wa_session']['login']['formId'];
                 $result['wa_session']=$_SESSION['wa_session'];
             }
