@@ -20,7 +20,7 @@
                     $_SESSION['wa_session']['login']['role']='OberAdmin';
                     header('Location: ./wa');
                 } else {
-
+                    $_SESSION['wa_session']['login']['loginFormError']++;
 
                 }
 
