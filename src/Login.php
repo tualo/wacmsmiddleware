@@ -11,11 +11,11 @@
                 isset($_REQUEST[$_SESSION['wa_session']['login']['usrOldID']]) 
                     && isset($_REQUEST[$_SESSION['wa_session']['login']['pwOldID']])
             ){
-                $result['message']=' Formularfelder vorhanden passt -';
+                $result['message']=' Formularfelder vorhanden -> passt -';
             } else {
-                $result['message']=' Formularfelder NICHT vorhanden passt -';
+                $result['message']=' Formularfelder NICHT vorhanden -> passt NICHT -';
             }
-            if ($_SESSION['wa_session']['login']['loggedIn']===false){
+           /* if ($_SESSION['wa_session']['login']['loggedIn']===false){
                 // isset 
                 if (
                     isset($_REQUEST['formID']) 
@@ -35,8 +35,8 @@
                 } else{
                    $_SESSION['wa_session']['login']['loginFormError']++;
                    // $result['message']=' Formfeld passt NICHT!-'.$_SESSION['wa_session']['login']['formID'].' vs. '.$_REQUEST['formID'];
-                }
-            }
+                } 
+            }*/
             $result['loginFormError']=$_SESSION['wa_session']['login']['loginFormError'];
         }
     } 
