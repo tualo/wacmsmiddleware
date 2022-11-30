@@ -7,6 +7,10 @@
             @session_start();
             $result['sbo'] = time();
             $result['loginstart']=$_SESSION['wa_session']['login']['formID'].'-----'.$_REQUEST['formID'];
+            if($_SESSION['wa_session']['login']['loginFormError'] > 3){
+                header('Location: https://www.bsi.bund.de');
+                exit();
+            }
             if( 
                 isset($_REQUEST[$_SESSION['wa_session']['login']['usrOldID']]) 
                     && isset($_REQUEST[$_SESSION['wa_session']['login']['pwOldID']])
@@ -22,10 +26,6 @@
                     header('Location: ../wa');
                     exit();
                 } else {
-                    if($_SESSION['wa_session']['login']['loginFormError'] > 3){
-                        header('Location: https://www.bsi.bund.de');
-                        exit();
-                    }
                     $_SESSION['wa_session']['login']['loginFormError']++;
                     $result['message']=$result['message'].'<br> Eingaben NICHT OK -';
                 }
