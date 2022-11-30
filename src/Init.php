@@ -26,6 +26,8 @@ class Init extends CMSMiddleWare{
             }
             $_SESSION['wa_session']['login']['usrOldID']=$_SESSION['wa_session']['login']['usrID'];
             $_SESSION['wa_session']['login']['pwOldID']=$_SESSION['wa_session']['login']['pwID'];
+            $_SESSION['wa_session']['login']['usrID']=uniqid('', true);
+            $_SESSION['wa_session']['login']['pwID']=uniqid('', true);
             $result['usrID']=$_SESSION['wa_session']['login']['usrID'];
             $result['pwID']=$_SESSION['wa_session']['login']['pwID'];
         }catch(\Exception $e){
