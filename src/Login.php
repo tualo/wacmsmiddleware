@@ -30,7 +30,7 @@
 
                 $sessionDB  = App::get('session')->db;
 
-                $loginResult = $db->singleValue(
+                $loginResult = $sessionDB->singleValue(
                     'select test_login({username},{password}) res',
                     [
                         'username'=>$_REQUEST[$_SESSION['wa_session']['login']['usrOldID']],
@@ -38,18 +38,16 @@
                     ],
                     'res'
                 );
-                $_SESSION['wa_session']['login']['loggedIn']=TRUE;
-                $_SESSION['wa_session']['login']['user']='Karl Knall';
-                $_SESSION['wa_session']['login']['role']='OberAdmin';
-                $result['message']=$result['message'].'<br> Eingaben OK -';
-                header('Location: ../wa');
-                exit();
-                                
+
                 if ($loginResult==1){
                     $_SESSION['wa_session']['login']['loggedIn']=TRUE;
-                    $_SESSION['wa_session']['login']['user']='Karl Knall';
-                    $_SESSION['wa_session']['login']['role']='OberAdmin';
-                    $result['message']=$result['message'].'<br> Eingaben OK -';
+/*                    $_SESSION['wa_session']['login']['user']='Karl Knall';
+                    $_SESSION['wa_session']['login']['role']='OberAdmin'; */
+                    $login = $sessionDB->singleRow('select * from loginnamen where login = {login}',['login'=>$username]);
+                    $groups = $sessionDB->singleValue('select JSON_ARRAYAGG(`group`) a from macc_users_groups where id={login}',$login,'a');
+                    $_SESSION['wa_session']['login']['user']=$login;
+                    $_SESSION['wa_session']['login']['role']=json_decode($groups,true);
+                    $result['message']=$result['message'].'<br> Eingaben OK -'; 
                     header('Location: ../wa');
                     exit();                    
                 } else {
