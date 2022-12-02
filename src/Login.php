@@ -49,7 +49,7 @@
                     $_SESSION['wa_session']['login']['vorname']=$login['vorname'];
                     $_SESSION['wa_session']['login']['nachname']=$login['nachname'];
                     $_SESSION['wa_session']['login']['role']=json_decode($groups,true);
-                    $_SESSION['wa_session']['login']['groups']=implode('',json_decode($groups,true));
+                    $_SESSION['wa_session']['login']['groups']=implode(' - ',json_decode($groups,true));
                     $result['message']=$result['message'].'<br> Eingaben OK -'; 
                     header('Location: ../wa');
                     exit();                    
