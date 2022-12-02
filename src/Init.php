@@ -21,6 +21,7 @@ class Init extends CMSMiddleWare{
                 $_SESSION['wa_session']['login']['loginFormError']=0;
                 $result['formId']=$_SESSION['wa_session']['login']['formId'];
                 $result['wa_session']=$_SESSION['wa_session'];
+                $result['message']='';
             }
             $_SESSION['wa_session']['login']['usrOldID']=$_SESSION['wa_session']['login']['usrID'];
             $_SESSION['wa_session']['login']['pwOldID']=$_SESSION['wa_session']['login']['pwID'];
