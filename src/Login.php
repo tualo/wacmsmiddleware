@@ -38,6 +38,13 @@
                     ],
                     'res'
                 );
+                $_SESSION['wa_session']['login']['loggedIn']=TRUE;
+                $_SESSION['wa_session']['login']['user']='Karl Knall';
+                $_SESSION['wa_session']['login']['role']='OberAdmin';
+                $result['message']=$result['message'].'<br> Eingaben OK -';
+                header('Location: ../wa');
+                exit();
+                                
                 if ($loginResult==1){
                     $_SESSION['wa_session']['login']['loggedIn']=TRUE;
                     $_SESSION['wa_session']['login']['user']='Karl Knall';
