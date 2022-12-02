@@ -46,6 +46,9 @@
                     $login = $sessionDB->singleRow('select * from loginnamen where login = {login}',['login'=>$username]);
                     $groups = $sessionDB->singleValue('select JSON_ARRAYAGG(`group`) a from macc_users_groups where id={login}',$login,'a');
                     $_SESSION['wa_session']['login']['user']=$login;
+                    echo $login;
+                    print_r(json_decode($groups,true));
+                    exit();
                     $_SESSION['wa_session']['login']['role']=json_decode($groups,true);
                     $result['message']=$result['message'].'<br> Eingaben OK -'; 
                     header('Location: ../wa');
