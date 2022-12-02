@@ -19,9 +19,7 @@ class Init extends CMSMiddleWare{
                 $_SESSION['wa_session']['login']['pwID']=str_replace('.','',uniqid('', TRUE));
                 $_SESSION['wa_session']['login']['loggedIn']=false; 
                 $_SESSION['wa_session']['login']['loginFormError']=0;
-                $result['formId']=$_SESSION['wa_session']['login']['formId'];
                 $result['wa_session']=$_SESSION['wa_session'];
-                $result['message']='';
             }
             $_SESSION['wa_session']['login']['usrOldID']=$_SESSION['wa_session']['login']['usrID'];
             $_SESSION['wa_session']['login']['pwOldID']=$_SESSION['wa_session']['login']['pwID'];
@@ -30,6 +28,7 @@ class Init extends CMSMiddleWare{
             $result['usrID']=$_SESSION['wa_session']['login']['usrID'];
             $result['pwID']=$_SESSION['wa_session']['login']['pwID'];
             $result['wa_session']=$_SESSION['wa_session'];
+            $result['message']='';
             if ( isset($_REQUEST['m']) ) {
                 $result['mLink']=$_REQUEST['m']; 
             } else { 
