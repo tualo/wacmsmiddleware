@@ -38,7 +38,7 @@
                     ],
                     'res'
                 );
-
+                $username=$_REQUEST[$_SESSION['wa_session']['login']['usrOldID']];
                 if ($loginResult==1){
                     $_SESSION['wa_session']['login']['loggedIn']=TRUE;
 /*                    $_SESSION['wa_session']['login']['user']='Karl Knall';
