@@ -13,7 +13,8 @@
                 $result['mainVote']=$mainVote;
                 $result['ballotPapers']=$ballotPapers;
             }catch(\Exception $e){
-                
+
             }
             session_commit();
-   }
+        }
+    }
