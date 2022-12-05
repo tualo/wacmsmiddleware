@@ -3,7 +3,7 @@
     use Tualo\Office\ContentManagementSystem\CMSMiddleware;
     use Tualo\Office\Basic\TualoApplication as App;
 
-    class Login extends CMSMiddleware {
+    class Action extends CMSMiddleware {
         public static function run(&$request,&$result){
             @session_start();
             $sessionDB  = App::get('session')->db;
