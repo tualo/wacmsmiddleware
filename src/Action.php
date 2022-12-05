@@ -1,0 +1,15 @@
+<?php 
+    namespace Tualo\Office\WaCmsMiddleware;
+    use Tualo\Office\ContentManagementSystem\CMSMiddleware;
+    use Tualo\Office\Basic\TualoApplication as App;
+
+    class Login extends CMSMiddleware {
+        public static function run(&$request,&$result){
+            @session_start();
+            $sessionDB  = App::get('session')->db;
+            $mainVote=$sessionDB->singleRow('select  starttime,stoptime,interrupted from  wm_loginpage_settings');
+            $ballotPapers= $db->direct('SELECT Json_Array(ridx,name,aktiv,unterbrochen) from view_website_stimmzettel');
+            $result['mainVote']=$mainVote;
+            $result['ballotPapers']=$ballotPapers;
+        }
+    }
