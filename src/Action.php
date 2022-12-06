@@ -16,6 +16,7 @@
                 $result['ballotPapersIndex']=$ballotPapersIndex;
             }catch(\Exception $e){
                  $result['message']=$result['message'].' -> DB not good -';
+                 $result['message']=$result['message'].$e->getMessage();
             }
             session_commit();
         }
