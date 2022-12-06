@@ -11,10 +11,16 @@
                 if ( isset($_REQUEST['usrid']) 
                     && $_REQUEST['usrid']==$_SESSION['wa_session']['login']['usrOldID'] 
                 ){
-                    if (isset($_REQUEST['mainVote']) // gesamte Wahl 
+                    if ( isset($_REQUEST['mainVote']) // gesamte Wahl 
                         && isset($_REQUEST['toggle'])
                     ){
                         $db->direct('update wm_loginpage_settings set interrupted={toggle} where id={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['mainVote']]);
+                    }
+
+                    if ( isset($_REQUEST['bltPp']) 
+                        && isset($_REQUEST['toggle'])
+                    ){
+                        $db->direct('update stimmzettel set unterbrochen={toggle} where ridx={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['bltBp']]);
                     }
                 }
 
