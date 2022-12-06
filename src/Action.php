@@ -23,6 +23,7 @@
                             $db->direct('update wm_loginpage_settings set starttime=now() + interval - 1 day, stoptime=now() + interval - 1 hour, interrupted=0  where id={id}',['id'=>$_REQUEST['mainVote']]);
                         }else{
                             $db->direct('update wm_loginpage_settings set starttime=now(), stoptime=now() + interval 200 day where id={id}',['id'=>$_REQUEST['mainVote']]);
+                            $db->direct('update stimmzettel set unterbrochen=0 where aktiv=1',[]);
                         }
                     }                    
 
