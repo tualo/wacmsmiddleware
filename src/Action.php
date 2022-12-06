@@ -9,9 +9,11 @@
             try{
                 $sessionDB  = App::get('session')->db;
                 $mainVote=$sessionDB->singleRow('select  starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
-                $ballotPapers= $sessionDB->direct('SELECT Json_Array(ridx,name,aktiv,unterbrochen) from view_website_stimmzettel',[]);
-                $result['mainVote']='Tralala'; // $mainVote;
+                $ballotPapers= $sessionDB->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
+                $ballotPapersIndex= $sessionDB->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
+                $result['mainVote']=  $mainVote;
                 $result['ballotPapers']=$ballotPapers;
+                $result['ballotPapersIndex']=$ballotPapersIndex;
             }catch(\Exception $e){
                  $result['message']=$result['message'].' -> DB not good -';
             }
