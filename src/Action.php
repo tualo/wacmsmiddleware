@@ -25,12 +25,19 @@
                 }
 
 
-                $mainVote=$db->singleRow('select  id,starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
+                $mainVote=$db->singleRow('select  now() jetzt,id,starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
                 $ballotPapers= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
-                $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
+                // $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
                 $result['mainVote']=  $mainVote;
                 $result['ballotPapers']=$ballotPapers;
-                $result['ballotPapersIndex']=$ballotPapersIndex;
+                if ( $result['mainVote']['starttime'] =< $result['mainVote']['jetzt']
+                    && $result['mainVote']['stoptime']>= $result['mainVote']['jetzt']
+                ){
+                    $result['mainVote']['status']='running';
+                } else {
+                    $result['mainVote']['status']='not running';
+                }
+                // $result['ballotPapersIndex']=$ballotPapersIndex;
             }catch(\Exception $e){
                  $result['message']=$result['message'].' -> DB not good -';
                  $result['message']=$result['message'].$e->getMessage();
