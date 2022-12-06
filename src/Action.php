@@ -16,6 +16,15 @@
                     ){
                         $db->direct('update wm_loginpage_settings set interrupted={toggle} where id={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['mainVote']]);
                     }
+                    if ( isset($_REQUEST['mainVote']) // gesamte Wahl 
+                        && isset($_REQUEST['setStatus'])
+                    ){
+                        if ($_REQUEST['setStatus']==0){
+                            $db->direct('update wm_loginpage_settings set starttime=now() + interval - 1 day, stoptime=now() + interval - 1 hour where id={id}',['id'=>$_REQUEST['mainVote']]);
+                        }else{
+                            $db->direct('update wm_loginpage_settings set starttime=now(), stoptime=now() + interval 200 day where id={id}',['id'=>$_REQUEST['mainVote']]);
+                        }
+                    }                    
 
                     if ( isset($_REQUEST['bltPp']) 
                         && isset($_REQUEST['toggle'])
