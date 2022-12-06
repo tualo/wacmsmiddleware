@@ -8,7 +8,18 @@
             @session_start();
             try{
                 $db  = App::get('session')->getDB();
-                $mainVote=$db->singleRow('select  starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
+                if ( isset($_REQUEST['usrid']) 
+                    && $_REQUEST['usrid']==$_SESSION['wa_session']['login']['usrOldID'] 
+                ){
+                    if (isset($_REQUEST['mainVote']) // gesamte Wahl 
+                        && isset($_REQUEST['toggle'])
+                    ){
+                        $db->direct('update wm_loginpage_settings set interrupted={toggle} where id={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['mainVote']]);
+                    }
+                }
+
+
+                $mainVote=$db->singleRow('select  id,starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
                 $ballotPapers= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
                 $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
                 $result['mainVote']=  $mainVote;
