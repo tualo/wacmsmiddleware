@@ -7,10 +7,10 @@
         public static function run(&$request,&$result){
             @session_start();
             try{
-                $sessionDB  = App::get('session')->db;
-                $mainVote=$sessionDB->singleRow('select  starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
-                $ballotPapers= $sessionDB->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
-                $ballotPapersIndex= $sessionDB->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
+                $db  = App::get('session')->getDB();
+                $mainVote=$db->singleRow('select  starttime,stoptime,interrupted from  wm_loginpage_settings',[]);
+                $ballotPapers= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
+                $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
                 $result['mainVote']=  $mainVote;
                 $result['ballotPapers']=$ballotPapers;
                 $result['ballotPapersIndex']=$ballotPapersIndex;
