@@ -20,7 +20,7 @@
                     if ( isset($_REQUEST['bltPp']) 
                         && isset($_REQUEST['toggle'])
                     ){
-                        $db->direct('update stimmzettel set unterbrochen={toggle} where ridx={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['bltBp']]);
+                        $db->direct('update stimmzettel set unterbrochen={toggle} where ridx={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['bltPp']]);
                     }
                 }
 
