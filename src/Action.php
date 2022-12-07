@@ -41,7 +41,7 @@
                             && isset($_REQUEST['toggle'])
                         ){
                             $db->direct('update stimmzettel set unterbrochen={toggle} where ridx={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['bltPp']]);
-                            $action='Wahl für Stimmzettel';                            
+                            $action='Wahl für Stimmzettel '.$_REQUEST['bltPp'];                            
                             if ($_REQUEST['toggle']==1){
                                 $action = $action.' unterbrochen'; 
                             }else{
