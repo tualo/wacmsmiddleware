@@ -59,7 +59,9 @@
                         $result['oldRequest']=$_REQUEST;
                     }
                 } else {
-                    $result['message']=$result['message'].' Geschummelt -';
+                    if ( isset($_REQUEST['usrid'])){
+                        $result['message']=$result['message'].' Geschummelt -'; 
+                    }
                 }
 
 
