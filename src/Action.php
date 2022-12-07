@@ -48,7 +48,7 @@
                                 $action = $action.' fortgesetzt';
                             }
                         }
-                        $db->direct("insert into wa_action_log (user ,login , action, comment) VALUES ('".$_SESSION['wa_session']['login']['vorname']." ".$_SESSION['wa_session']['login']['nachname']."','".$_SESSION['wa_session']['login']['user']."','".$action."','".$_REQUEST['comment']."'" ,[]);
+                        $db->direct("insert into wa_action_log (user ,login , action, comment) VALUES ('".$_SESSION['wa_session']['login']['vorname']." ".$_SESSION['wa_session']['login']['nachname']."','".$_SESSION['wa_session']['login']['user']."','".$action."','".$_REQUEST['comment']."')" ,[]);
                     }else{
                         $result['forceComment']=1;
                         $result['oldRequest']=$_REQUEST;
