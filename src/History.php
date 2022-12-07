@@ -8,7 +8,7 @@
             @session_start();
             try{
                 $db  = App::get('session')->getDB();
-                $history=$db->direct("select user,login, DATE_FORMAT(createtime,'%d.%m.%Y %H:%i:%s') datum, action,comment from wa_action_log order by createtime desc limit 500",[]);
+                $history=$db->direct("select user,login,ip_address, DATE_FORMAT(createtime,'%d.%m.%Y %H:%i:%s') datum, action,comment from wa_action_log order by createtime desc limit 500",[]);
                 $result['history']=$history;
             }catch(\Exception $e){
                  $result['message']=$result['message'].$e->getMessage();
