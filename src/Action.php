@@ -12,6 +12,11 @@
                     && $_REQUEST['usrid']==$_SESSION['wa_session']['login']['usrOldID'] 
                 ){
                     if ( isset($_REQUEST['comment']) ){
+                        if (trim($_REQUEST['comment'])==''){
+                            $comment=' Der Benutzer hat keinen Kommentar hinterlassen!';
+                        }else{
+                            $comment=$_REQUEST['comment'];
+                        }
                         if ( isset($_REQUEST['mainVote']) // gesamte Wahl unterbrechen/fortsetzen
                             && isset($_REQUEST['toggle'])
                         ){
