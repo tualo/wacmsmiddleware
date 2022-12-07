@@ -61,7 +61,7 @@
                 }
 
 
-                $mainVote=$db->singleRow("select  id,starttime,stoptime,interrupted,if ( now() >= starttime and now() <= stoptime ,'running','not running' ) status from  wm_loginpage_settings",[]);
+                $mainVote=$db->singleRow("select  id, DATE_FORMAT(starttime,'%d.%m.%Y %H:%i:%s') starttime,DATE_FORMAT(stoptime,'%d.%m.%Y %H:%i:%s') stoptime,interrupted,if ( now() >= starttime and now() <= stoptime ,'running','not running' ) status from  wm_loginpage_settings",[]);
                 $ballotPapers= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
                 $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
                 $result['mainVote']=  $mainVote;
