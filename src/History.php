@@ -8,7 +8,7 @@
             @session_start();
             try{
                 $db  = App::get('session')->getDB();
-                $history=$db->singleRow("select  * from wa_action_log order by createtime desc",[]);
+                $history=$db->direct("select  * from wa_action_log order by createtime desc",[]);
                 $result['history']=$history;
             }catch(\Exception $e){
                  $result['message']=$result['message'].$e->getMessage();
