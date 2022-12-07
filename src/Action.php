@@ -33,7 +33,7 @@
                         ){
                             $action='Gesamte Online-Wahl ';
                             if ($_REQUEST['setStatus']==0){
-                                $db->direct('update wm_loginpage_settings set stoptime=now() , interrupted=0  where id={id}',['id'=>$_REQUEST['mainVote']]);
+                                $db->direct('update wm_loginpage_settings set stoptime=now() + interval - 1 second, interrupted=0  where id={id}',['id'=>$_REQUEST['mainVote']]);
                                 $action = $action.' beendet';
                             }else{
                                 $db->direct('update wm_loginpage_settings set starttime=now(), stoptime=now() + interval 200 day where id={id}',['id'=>$_REQUEST['mainVote']]);
