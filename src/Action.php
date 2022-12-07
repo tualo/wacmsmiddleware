@@ -16,15 +16,24 @@
                             && isset($_REQUEST['toggle'])
                         ){
                             $db->direct('update wm_loginpage_settings set interrupted={toggle} where id={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['mainVote']]);
+                            $action='Gesamte Online-Wahl ';
+                            if ($_REQUEST['toggle']==1){
+                                $action = $action.' unterbrochen'; 
+                            }else{
+                                $action = $action.' fortgesetzt';
+                            }
                         }
                         if ( isset($_REQUEST['mainVote']) // gesamte Wahl starten/stoppen
                             && isset($_REQUEST['setStatus'])
                         ){
+                            $action='Gesamte Online-Wahl ';
                             if ($_REQUEST['setStatus']==0){
                                 $db->direct('update wm_loginpage_settings set starttime=now() + interval - 1 day, stoptime=now() + interval - 1 hour, interrupted=0  where id={id}',['id'=>$_REQUEST['mainVote']]);
+                                $action = $action.' beendet';
                             }else{
                                 $db->direct('update wm_loginpage_settings set starttime=now(), stoptime=now() + interval 200 day where id={id}',['id'=>$_REQUEST['mainVote']]);
                                 $db->direct('update stimmzettel set unterbrochen=0 where aktiv=1',[]);
+                                $action = $action.' gestartet';
                             }
                         }                    
 
@@ -32,7 +41,14 @@
                             && isset($_REQUEST['toggle'])
                         ){
                             $db->direct('update stimmzettel set unterbrochen={toggle} where ridx={id}',['toggle'=>$_REQUEST['toggle'],'id'=>$_REQUEST['bltPp']]);
+                            $action='Wahl für Stimmzettel';                            
+                            if ($_REQUEST['toggle']==1){
+                                $action = $action.' unterbrochen'; 
+                            }else{
+                                $action = $action.' fortgesetzt';
+                            }
                         }
+                        $db->direct("insert into wa_action_log (user ,login , action, comment) VALUES ('".$_SESSION['wa_session']['login']['vorname']." ".$_SESSION['wa_session']['login']['nachname']."','".$_SESSION['wa_session']['login']['user']."','".$action."','".$_REQUEST['comment']."'" ,[]);
                     }else{
                         $result['forceComment']=1;
                         $result['oldRequest']=$_REQUEST;
