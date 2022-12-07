@@ -11,7 +11,7 @@
                 if ( isset($_REQUEST['usrid']) 
                     && $_REQUEST['usrid']==$_SESSION['wa_session']['login']['usrOldID'] 
                 ){
-                    if ($_REQUEST['comment']){
+                    if ( isset($_REQUEST['comment']) ){
                         if ( isset($_REQUEST['mainVote']) // gesamte Wahl unterbrechen/fortsetzen
                             && isset($_REQUEST['toggle'])
                         ){
