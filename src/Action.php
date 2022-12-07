@@ -61,6 +61,7 @@
                 } else {
                     if ( isset($_REQUEST['usrid'])){
                         $result['message']=$result['message'].' Geschummelt -'; 
+                        $db->direct("insert into wa_action_log (user ,login , action, comment,ip_address) VALUES ('".$_SESSION['wa_session']['login']['vorname']." ".$_SESSION['wa_session']['login']['nachname']."','".$_SESSION['wa_session']['login']['user']."','".$action."',' SCHUMMEL - VERSUCH','".$_SERVER['REMOTE_ADDR']."')" ,[]);
                     }
                 }
 
