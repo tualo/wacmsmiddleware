@@ -58,6 +58,8 @@
                         $result['forceComment']=1;
                         $result['oldRequest']=$_REQUEST;
                     }
+                } else {
+                    $result['message']=$result['message'].' Geschummelt -';
                 }
 
 
