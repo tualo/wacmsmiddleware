@@ -63,10 +63,10 @@
 
                 $mainVote=$db->singleRow("select  id,starttime,stoptime,interrupted,if ( now() >= starttime and now() <= stoptime ,'running','not running' ) status from  wm_loginpage_settings",[]);
                 $ballotPapers= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[]);
-                // $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
+                $ballotPapersIndex= $db->direct('SELECT ridx,name,aktiv,unterbrochen from view_website_stimmzettel',[],'ridx');
                 $result['mainVote']=  $mainVote;
                 $result['ballotPapers']=$ballotPapers;
-                // $result['ballotPapersIndex']=$ballotPapersIndex;
+                $result['ballotPapersIndex']=$ballotPapersIndex;
             }catch(\Exception $e){
                  $result['message']=$result['message'].' -> DB not good -';
                  $result['message']=$result['message'].$e->getMessage();
